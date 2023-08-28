@@ -26,16 +26,19 @@ const Form = ( {currentId, setCurrentId} ) => {
     } else {
       dispatch(createPost(postData));
     }
+    clear()
 
   }
   const clear = () => {
+    setCurrentId(null)
+    setpostData({ creator: '', title: '',  message: '',  tags: '',  selectedFile: '' });
     
   }
 
   return (
     <Paper className={classes.Paper}>
       <form autoComplete='off' noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-      <Typography variant='h6'>Creating a Memory</Typography>
+      <Typography variant='h6'>{ currentId ? 'Editing' : 'creating' } a Memory</Typography>
       <TextField name="creator" variant="outlined" label="Creator" fullWidth value={postData.creator} onChange={(e) => setpostData( {...postData, creator: e.target.value})}/>
       <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title} onChange={(e) => setpostData( {...postData, title: e.target.value})}/>
       <TextField name="message" variant="outlined" label="message" fullWidth value={postData.message} onChange={(e) => setpostData( {...postData, message: e.target.value})}/>
