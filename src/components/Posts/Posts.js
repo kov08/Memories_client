@@ -3,20 +3,19 @@ import React, { useEffect } from 'react'
 import { Grid, CircularProgress } from '@material-ui/core'
 
 import Post from './Post/Post'
-// import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import useStyles from './styles'
-import { useDispatch, useSelector } from 'react-redux'
+// import { useDispatch, useSelector } from 'react-redux'
 // import { fetch_all } from './postsSlice'
 
 
 const Posts = ({ setCurrentId }) => {
   const posts = useSelector((state) => state.posts);
-  const classes = useStyles();
-  
-  const dispatch = useDispatch();
+  const classes = useStyles()
 
   // console.log(posts);
 
+  // const dispatch = useDispatch()
   // useEffect(() => {
   //   dispatch(fetch_all())
   // }, [])
