@@ -18,10 +18,6 @@ export default makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
     width: '95%', // Fix IE 11 issue.
     alignItems: 'center',
-    // padding: theme.spacing(1),
-//     justifyContent: 'center',
-//     display: 'flex',
-//     flexWrap: 'wrap'
   },
   form: {
     width: '95%', // Fix IE 11 issue.
