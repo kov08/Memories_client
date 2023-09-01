@@ -16,9 +16,19 @@ export default makeStyles((theme) => ({
   },
   fileInput: {
     width: '97%',
-    margin: '10px 0',
+    margin: '8px 5px',
+    // padding: theme.spacing(2),
+    // marginBottom: 10,
+    // margin: theme.spacing(3)
   },
   buttonSubmit: {
     marginBottom: 10,
+    // margin: theme.spacing(3),
+    // display: 'flex',
+    // flexWrap: 'wrap',
+    // justifyContent: 'center',
+    // '& .MuiTextField-root': {
+    //   margin: theme.spacing(1),
+    // },
   },
 }));
