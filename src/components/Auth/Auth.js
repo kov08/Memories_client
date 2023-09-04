@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { GoogleLogin } from 'react-google-login';
+// import { GoogleLogin } from 'react-google-login';
+//  From google website 2nd trial: 2.0
+// import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 
 import useStyles from './styles';
 import Input from './Input';
 import Icon from './icon';
 import { useDispatch } from 'react-redux';
 
+// Work under MY login button implementation : 3.0
+import { useEffect } from 'react';
+import Login from './login';
+import { gapi } from 'gapi-script';
+
+
+
+
+
 
 const Auth = () => {
 //   console.log("This works")
+    const clientId="185487198676-iqa8ukbhcjq9612ejquh2m5vsr0d37nc.apps.googleusercontent.com";
     const classes = useStyles();
     
     const [showPassword,setShowPassword] = useState(false);
@@ -33,20 +45,34 @@ const Auth = () => {
         setShowPassword(false)
     }
      // It has a bug that enable show password alteratively for ex. if show password is disabled on sign up page it will be enabled automatically on sign in page.
+
+
      const dispatch = useDispatch();
-     const googleSuccess = async (res) =>{
-        const result = res?.profileObj;
-        const token = res?.tokenId;
-        try {
-            dispatch({ type : 'AUTH', data : { result, token }});
-        } catch (error) {
-            console.error();
-        }
-     }
-     const googleFailure = (error) =>{
-        console.error();   
-        console.log('Google Sign In was unsuccessful, Try aagin later!');
-     }
+    
+    //  Under MY loin implementation: 3.0
+    //  const googleSuccess = async (res) =>{
+    //     const result = res?.profileObj;
+    //     const token = res?.tokenId;
+    //     try {
+    //         dispatch({ type : 'AUTH', data : { result, token }});
+    //     } catch (error) {
+    //         console.error();
+    //     }
+    //  }
+    //  const googleFailure = (error) =>{
+    //     console.log(error);   
+    //     console.log('Google Sign In was unsuccessful, Try aagin later!');
+    //  }
+
+    useEffect(() => {
+        function start() {
+            gapi.client.init({
+                clientId,
+                scope:""
+            })
+        };
+        gapi.load('client:auth2', start);
+    });
 
     return (
        
@@ -73,8 +99,25 @@ const Auth = () => {
                     <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
                         {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
-                    <GoogleLogin
-                        clientId="443346190390-dck3tqtjhglckut0lpull5um6hvo82p8.apps.googleusercontent.com"
+
+{/* My Implementation of Button with updated version of google oauth */}
+                    <Login />
+                    {/* <Login className={classes.googleButton} 
+                color="primary" 
+                fullWidth 
+                startIcon={<Icon />} 
+                variant="contained">
+                                Google Sign In
+                    </Login>  */}
+
+                {/* <Button type="submit" className={classes.googleButton} color="primary" fullWidth  startIcon={<Icon />} variant="contained" > */}
+                                {/* <Login /> */}
+                            {/* </Button> */}
+
+{/* =================================================================================== */}
+                    {/* Showcased in video */}
+                    {/* <GoogleLogin
+                        clientId="443346190390-dck3tqtjhglckut0lpull5um6hvo82p8.apps.googleusercontent.com"                        
                         render={(renderProps) => (
                             <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained" >
                                 Google Sign In
@@ -83,12 +126,30 @@ const Auth = () => {
                             onSuccess={googleSuccess}
                             onFailure={googleFailure}
                             cookiePolicy="single_host_origin"
-                    />
-                    <Grid container justifyContent="flex-end">
+                    /> */}
+{/* =================================================================================== */}
+                    {/* New UPdated authentication provider : not working!!!
+                    <GoogleOAuthProvider clientId='443346190390-dck3tqtjhglckut0lpull5um6hvo82p8.apps.googleusercontent.com'>
+
+                    <GoogleLogin
+                        // clientId="443346190390-dck3tqtjhglckut0lpull5um6hvo82p8.apps.googleusercontent.com"
+                        render={(renderProps) => (
+                            <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained" >
+                                Google Sign In
+                            </Button>
+                        )} 
+                        onSuccess={googleSuccess}
+                        onFailure={googleFailure}
+                        cookiePolicy="single_host_origin"
+                        />
+              
+                    </GoogleOAuthProvider> */}
+{/* =================================================================================== */}
+
+                        <Grid container justifyContent="flex-end">
                         <Button onClick={switchMode}>
                             { isSignup ? 'Already have an account? Sign In' : 'Dont have an account? Sign Up'}
                         </Button>
-
                     </Grid>
                 </form>
             </Paper>

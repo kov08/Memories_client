@@ -2,8 +2,10 @@ import { legacy_createStore as createStore , combineReducers, applyMiddleware, c
 import thunk from 'redux-thunk';
 
 import posts from '../reducers/posts';
+import auth from '../reducers/auth';
 
-const rootReducer = combineReducers({ posts });
+
+const rootReducer = combineReducers({ posts, auth });
 
 export  const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
