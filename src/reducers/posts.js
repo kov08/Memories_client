@@ -6,6 +6,7 @@ export default (posts = [], action) => {
          
         case DELETE:
             return posts.filter((post) => post._id !== action.payload );
+            // I have some doubt in _id and id usage in appliication
 
         case UPDATE:
         // case LIKE:

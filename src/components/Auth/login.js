@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import useStyles from './styles';
 // import Icon from './icon';
 import { Button } from '@material-ui/core';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -12,14 +13,14 @@ function Login() {
     
     const classes = useStyles();
     const dispatch = useDispatch();
+    const history = useNavigate();
 
-    const googleSuccess = async (res) => {
-        // console.log("Login Success! Current user: ", res.profileObj);
-       
+    const googleSuccess = async (res) => {            
         const result = res?.profileObj;
         const token = res?.tokenId;
         try {
             dispatch({ type : 'AUTH', data : { result, token }});
+            history.pushState('/');
         } catch (error) {
             console.error();
         }

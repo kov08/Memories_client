@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
 
@@ -10,8 +10,10 @@ const Navbar = () => {
   // console.log("Sucess2!")
   const classes = useStyles();
 
-    const user = null;
-    
+  // const user = null;
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+  console.log(user);  
+
     return (
       <AppBar className={classes.appBar} position="static" color="inherit">
         <div>

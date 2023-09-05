@@ -100,20 +100,9 @@ const Auth = () => {
                         {isSignup ? 'Sign Up' : 'Sign In'}
                     </Button>
 
-{/* My Implementation of Button with updated version of google oauth */}
+{/* My Implementation of Button with updated version of google oauth: 3.0 */}
                     <Login />
-                    {/* <Login className={classes.googleButton} 
-                color="primary" 
-                fullWidth 
-                startIcon={<Icon />} 
-                variant="contained">
-                                Google Sign In
-                    </Login>  */}
-
-                {/* <Button type="submit" className={classes.googleButton} color="primary" fullWidth  startIcon={<Icon />} variant="contained" > */}
-                                {/* <Login /> */}
-                            {/* </Button> */}
-
+                    
 {/* =================================================================================== */}
                     {/* Showcased in video */}
                     {/* <GoogleLogin
@@ -128,7 +117,7 @@ const Auth = () => {
                             cookiePolicy="single_host_origin"
                     /> */}
 {/* =================================================================================== */}
-                    {/* New UPdated authentication provider : not working!!!
+                    {/* New UPdated authentication provider : not working!!! : 2.0
                     <GoogleOAuthProvider clientId='443346190390-dck3tqtjhglckut0lpull5um6hvo82p8.apps.googleusercontent.com'>
 
                     <GoogleLogin
