@@ -74,6 +74,9 @@ const Auth = () => {
         gapi.load('client:auth2', start);
     });
 
+    // Google api switch to get access token if using different api
+    // var accessToken = gapi.auth.getTocken().access_token;
+
     return (
        
         <Container component="main" maxWidth="xs" >

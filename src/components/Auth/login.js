@@ -20,7 +20,7 @@ function Login() {
         const token = res?.tokenId;
         try {
             dispatch({ type : 'AUTH', data : { result, token }});
-            history.pushState('/');
+            history("/");
         } catch (error) {
             console.error();
         }

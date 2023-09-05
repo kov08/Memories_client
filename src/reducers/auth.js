@@ -9,6 +9,10 @@ const authReducer = (state = {authData : null}, action) => {
         // console.log(action?.data);
         //     return state;
             
+        case LOGOUT:
+            localStorage.clear();
+            return { ...state, authData: null }
+            
         default:
             return state;
                 
