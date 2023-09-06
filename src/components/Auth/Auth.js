@@ -16,6 +16,7 @@ import { signin, signup } from '../../actions/auth';
 import { useEffect } from 'react';
 import Login from './login';
 import { gapi } from 'gapi-script';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -26,6 +27,7 @@ const Auth = () => {
 //   console.log("This works")
     const clientId="185487198676-iqa8ukbhcjq9612ejquh2m5vsr0d37nc.apps.googleusercontent.com";
     const classes = useStyles();
+    const history = useNavigate();
     
     const [showPassword,setShowPassword] = useState(false);
     const [formData, setFormData] = useState(initialState);
