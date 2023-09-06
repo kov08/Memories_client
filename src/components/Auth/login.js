@@ -32,7 +32,7 @@ function Login() {
 
     return(
         <div id = 'logInButton'>
-            <Button className={classes.googleButton}> 
+            {/* <Button className={classes.googleButton}>  */}
                 <GoogleLogin                                
                     clientId={clientId}
                     buttonText=" Google Sign In"
@@ -41,7 +41,7 @@ function Login() {
                     cookiePolicy={'single_host_origin'}
                     isSignedIn={true}
                 />
-            </Button>
+            {/* </Button> */}
         </div>
     )
 }

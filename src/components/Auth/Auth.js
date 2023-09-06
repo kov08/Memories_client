@@ -9,6 +9,8 @@ import useStyles from './styles';
 import Input from './Input';
 import Icon from './icon';
 import { useDispatch } from 'react-redux';
+import { signin, signup } from '../../actions/auth';
+
 
 // Work under MY login button implementation : 3.0
 import { useEffect } from 'react';
@@ -18,7 +20,7 @@ import { gapi } from 'gapi-script';
 
 
 
-
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''}
 
 const Auth = () => {
 //   console.log("This works")
@@ -26,17 +28,26 @@ const Auth = () => {
     const classes = useStyles();
     
     const [showPassword,setShowPassword] = useState(false);
+    const [formData, setFormData] = useState(initialState);
     
     const handleShowPassword =() => setShowPassword((prevShowpassword) => !prevShowpassword)
 
     const [isSignup, setIsSignup] = useState(false);
     // const isSignup = true;
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // console.log(formData);
 
+        if (isSignup){
+            dispatch(signup(formData, history));
+        } else {
+            dispatch(signin(formData, history));            
+        }
     }
 
-    const handleChange = () => {
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
 
     }
 
@@ -91,7 +102,7 @@ const Auth = () => {
                             isSignup && (
                                 <>
                                     <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half />
-                                    <Input name="firstName" label="First Name" handleChange={handleChange} half />
+                                    <Input name="lastName" label="Last Name" handleChange={handleChange} half />
                                 </>
                             )
                         }
