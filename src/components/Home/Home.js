@@ -14,7 +14,7 @@ const Home = () => {
     
     useEffect(() => {
       dispatch(getPosts());
-    }, [currentId, dispatch]);
+    }, [dispatch]);
 
     // console.log("tHIS WORKS!");
     
@@ -23,7 +23,7 @@ const Home = () => {
         <Container>
             <Grid className={classes.mainContainer} container justify="space-between" alignItems="stretch" spacing={3}>
                 <Grid item xs={12} sm={7}>
-                    <Posts setCurrentId={setCurrentId} />
+                    <Posts setCurrentId2={setCurrentId} />
                 </Grid>
                 <Grid item xs={12} sm={4}>
                     <Form currentId={currentId} setCurrentId={setCurrentId} />

@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import useStyles from './styles';
 import { deletePost, likePost } from '../../../actions/posts';
 
-const Post = ({ post, setCurrentId }) => {
+const Post = ({ post, setCurrentId3 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'));
@@ -39,7 +39,7 @@ const Post = ({ post, setCurrentId }) => {
         <Button 
             style={{color: 'white'}} 
             size="small" 
-            onClick={() => setCurrentId(post._id)} >
+            onClick={() => setCurrentId3(post._id)} >
           <MoreHorizIcon fontSize="medium" />
         </Button>
       </div>
@@ -54,9 +54,6 @@ const Post = ({ post, setCurrentId }) => {
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
           <Likes />
-          {/* <ThumbUpAltIcon fontSize="small" />
-          &nbsp; Like &nbsp;
-          {post.likeCount} */}
         </Button>
         {(user?.result?._id === post?.creator || user?.result?.googleId === post?.creator ) && (
         <Button size="small" color="primary" onClick={() => {dispatch(deletePost(post._id))}}>
@@ -64,7 +61,6 @@ const Post = ({ post, setCurrentId }) => {
           Delete
         </Button>
         )}
-
       </CardActions>
     </Card>
 
