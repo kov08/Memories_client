@@ -5,13 +5,24 @@ import * as api from '../api';
 
 export const getPosts = () => async (dispatch) => {
     try {
-        const { data } = await api.fetchPosts();
+        const { data = {data}} = await api.fetchPosts();
         // console.log("Inside getPosts: ", data)
         dispatch({ type : FETCH_ALL, payload : data })
     } catch (error) {
         console.log(error.message);
     }
 }
+
+export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+    try {
+        const { data } = await api.fetchPostsBySearch(searchQuery);
+
+        console.log(data);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 export const createPost = (post) => async (dispatch) => {
     // why add post in aove bracket

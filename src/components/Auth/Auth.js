@@ -7,7 +7,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
 import useStyles from './styles';
 import Input from './Input';
-import Icon from './icon';
+// import Icon from './icon';
 import { useDispatch } from 'react-redux';
 import { signin, signup } from '../../actions/auth';
 
