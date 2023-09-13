@@ -4,7 +4,8 @@ import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core';
 import decode from 'jwt-decode';
 
 import useStyles from './styles';
-import memories from '../../assets/images/memories.png';
+import memoriesLogo from '../../assets/images/memoriesLogo.png';
+import memoriesText from '../../assets/images/memoriesText.png';
 import { useDispatch } from 'react-redux';
 
 
@@ -14,7 +15,7 @@ const Navbar = () => {
 
   // const user = null;
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
-  console.log(user);
+  // console.log(user);
   
   const history = useNavigate();
   const dispatch = useDispatch();
@@ -43,11 +44,10 @@ const Navbar = () => {
 
     return (
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <div>
-          <Typography className={classes.heading} variant="h2" align="center">Memories
-          </Typography>
-          <img  className={classes.image} src={memories} alt="memories" height="60" />
-        </div>        
+        <Link to="/" className={classes.brandContainer}>
+          <img src={memoriesText} alt="icon" height="40 px" />
+          <img className={classes.image} src={memoriesLogo} alt="icon" height="45px" />
+        </Link>        
         <Toolbar className={classes.toolbar}>
           {user ? (
             <div className={classes.profile}>
