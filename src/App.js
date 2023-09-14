@@ -6,6 +6,7 @@ import Home from './components/Home/Home';
 import Navbar from './components/Navbar/Navbar';
 import Auth from './components/Auth/Auth';
 import PostDetails from './components/PostDetails/PostDetails';
+import Chat from './components/ChatPage/ChatPage';
 
 
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/posts/search" exact Component={Home} />
             <Route path="/posts/:id" exact Component={PostDetails} />            
             <Route path="/auth" exact Component= {() => (!user ? <Auth /> : <Navigate to="/posts" />)} />
+            <Route path="/chats" exact Component={Chat} />
           </Routes>
       </Container>
     </BrowserRouter>
