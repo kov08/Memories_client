@@ -9,7 +9,7 @@ API.interceptors.request.use((req) => {
     return req;
 });
 
-// console.log("API working");
+// console.log("API working INITIALIZED:");
 
 export const fetchPost = (id) => API.get(`/posts/${id}`);
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
@@ -19,6 +19,8 @@ export const createPost = ( newPost ) => API.post('/posts', newPost);
 export const updatePost = ( idTest, updatedPost ) => API.patch(`/posts/${idTest}`, updatedPost);
 export const deletePost = ( id ) => API.delete(`/posts/${id}`);
 export const likePost = ( id ) => API.patch(`/posts/${id}/likePost`);
+export const comment = ( value, id ) => API.post(`/posts/${id}/commentPost`, {value});
+// console.log("API working: ");
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);
